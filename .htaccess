@@ -1,0 +1,30 @@
+# Hiding .php extension in URLs
+RewriteEngine On
+
+# Browser security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Error Pages
+ErrorDocument 403 /404.php
+ErrorDocument 404 /404.php
+
+# If client requests a file without .php, check if the file with .php exists, and rewrite it internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# If client explicitly requests a .php file in the URL, redirect them to the non-php URL (external redirect for SEO and clean URLs)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.php\ HTTP/ [NC]
+RewriteRule ^([^\ ]+)\.php$ /$1 [R=301,L]
+
+# Rewrite /user/<view> to index.php?view=<view>
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^user/([a-zA-Z0-9_-]+)$ index.php?view=$1 [QSA,L]
