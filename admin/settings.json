@@ -1,0 +1,38 @@
+{
+    "site_name": "ToolGameAI",
+    "min_deposit": 10000,
+    "max_deposit": 30000000,
+    "chat_enabled": false,
+    "maintenance_mode": false,
+    "maintenance_message": "H\u1ec7 th\u1ed1ng \u0111ang b\u1ea3o tr\u00ec, vui l\u00f2ng quay l\u1ea1i sau!",
+    "telegram_bot_token": "",
+    "telegram_chat_id": "",
+    "deposit_promo_percent": 0,
+    "deposit_promo_days": 0,
+    "deposit_promo_expiry": 0,
+    "key_discount_percent": 0,
+    "key_discount_days": 0,
+    "key_discount_expiry": 0,
+    "key_plans": {
+        "1day": {
+            "price": 40000,
+            "old_price": 0
+        },
+        "3day": {
+            "price": 60000,
+            "old_price": 0
+        },
+        "7day": {
+            "price": 99000,
+            "old_price": 0
+        },
+        "30day": {
+            "price": 175000,
+            "old_price": 0
+        },
+        "forever": {
+            "price": 400000,
+            "old_price": 0
+        }
+    }
+}
